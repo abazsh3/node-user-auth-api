@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
 mongoose.Promise=global.Promise;
-mongoose.connect("mongodb+srv://abaz:<abazabaz>@cluster0-tvwfm.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/users',{useNewUrlParser:true});
 
 module.exports={mongoose};
