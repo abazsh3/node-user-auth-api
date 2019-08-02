@@ -34,6 +34,13 @@ app.get('/users/:email&&:password',(req,res)=>{
         res.status(400).send();
     })
 });
+app.get('/users',(req,res)=>{
+    User.find().then((user)=>{
+        res.send({user});
+    },(e)=>{
+        res.status(400).send(e)
+    });
+});
 
 app.listen(port, () => {
     console.log('app is running on port ',port);
