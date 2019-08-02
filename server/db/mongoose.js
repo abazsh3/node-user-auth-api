@@ -4,6 +4,9 @@ mongoose.connect(process.env.MONOLAB_URI||"mongodb+srv://abaz:abazabaz@cluster0-
     ,{useNewUrlParser:true})
     .then(res=>{
         console.log(res);
+    })
+    .catch(err=>{
+        console.log(err);
     });
 
 module.exports={mongoose};
