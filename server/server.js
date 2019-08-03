@@ -36,7 +36,7 @@ app.get('/users/:email&&:password',(req,res)=>{
             });
         }
         res.send({
-            username: user.username,
+            username: user[0].username,
             verification:true
         });
     }).catch((e)=>{
