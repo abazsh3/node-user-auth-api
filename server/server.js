@@ -30,19 +30,27 @@ app.get('/users/:email&&:password',(req,res)=>{
         email:email,
         password:password
     })).then((user)=>{
-        if (!user){
-            return  res.status(404).send();
+        if (user.length===0){
+            return  res.status(404).send({
+                verification:false
+            });
         }
-        res.send({user});
+        res.send({
+            username: user.username,
+            verification:true
+        });
     }).catch((e)=>{
         res.status(400).send();
     })
 });
 app.get('/users',(req,res)=>{
-    User.find().then((user)=>{
-        res.send({user});
-    },(e)=>{
-        res.status(400).send(e)
+    User.find().then((doc)=>{
+        if (doc.length>0){
+            res.send({doc});
+        }
+        else {
+            res.status(404).send();
+        }
     });
 });
 
