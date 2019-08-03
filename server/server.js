@@ -35,8 +35,9 @@ app.get('/users/:email&&:password',(req,res)=>{
                 verification:false
             });
         }
+        let musername=user[0].username;
         res.send({
-            username: user[0].username,
+            username: musername,
             verification:true
         });
     }).catch((e)=>{
